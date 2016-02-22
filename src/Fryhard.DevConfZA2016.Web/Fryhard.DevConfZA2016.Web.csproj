@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +177,11 @@
     <Content Include="Content\Images\joburg-my-city_final4.gif" />
     <Content Include="Content\Images\DevConf-logo.png" />
     <Content Include="Content\Images\rabbitmq-icon.png" />
+    <Content Include="Content\Images\smile\0.png" />
+    <Content Include="Content\Images\smile\1.png" />
+    <Content Include="Content\Images\smile\2.png" />
+    <Content Include="Content\Images\smile\3.png" />
+    <Content Include="Content\Images\smile\4.png" />
     <Content Include="Content\Images\twitter-icon.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -287,6 +293,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Vote\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

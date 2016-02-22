@@ -90,6 +90,29 @@ h5, h6 {
         text-decoration: none;
     }
 
+.smile{
+     width:20%; 
+     float:left
+}
+
+.smileparent{
+    width:100%; 
+    margin:0 auto;
+}
+
+.smileheader{
+    width:55%; 
+    margin:0 auto;
+    text-align:center;
+}
+
+.headerimage {
+        background-image: url(/Content/Images/joburg-my-city_final4.gif);
+        height:400px;
+        background-size:cover;
+        background-position: center center;
+    }
+
 
 /* main layout
 ----------------------------------------------------------*/
@@ -756,4 +779,54 @@ tr.pager td {
         footer p {
             margin: 0;
         }
+    
+    .smile{
+        float:none;
+        
+    }
+
+    .smileparent{
+        width:159px; 
+        margin:0 auto;
+    }
+
+    .smileheader{
+        width:60%; 
+        margin:0 auto;
+        text-align:center;
+    }
+
+
+
+}
+
+
+/********************
+*   500px Mobile Styles   *
+********************/
+@media only screen and (max-width: 500px) {
+
+    .smile{
+        float:none;
+        
+    }
+
+    .smileparent{
+        width:159px; 
+        margin:0 auto;
+    }
+
+    .smileheader{
+        width:85%; 
+        margin:0 auto;
+        text-align:center;
+    }
+}
+
+
+/********************
+*   Header max size*
+********************/
+@media only screen and (max-width: 1181px) {
+ 
 }
