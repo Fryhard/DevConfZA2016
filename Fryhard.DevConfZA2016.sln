@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fryhard.DevConfZA2016.Web", "Fryhard.DevConfZA2016.Web\Fryhard.DevConfZA2016.Web.csproj", "{8CE98CD4-365B-4437-B494-C4F9F6C561E5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5E3A6BA9-72D2-4EC1-B9EC-15A6751F9754}"
+	ProjectSection(SolutionItems) = preProject
+		docs\DevConf_BrendanFry_AYearOfRabbitMQ.pptx = docs\DevConf_BrendanFry_AYearOfRabbitMQ.pptx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B28B51C3-481B-4C41-8D84-4459653A70CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fryhard.DevConfZA2016.Web", "src\Fryhard.DevConfZA2016.Web\Fryhard.DevConfZA2016.Web.csproj", "{8CE98CD4-365B-4437-B494-C4F9F6C561E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +25,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8CE98CD4-365B-4437-B494-C4F9F6C561E5} = {B28B51C3-481B-4C41-8D84-4459653A70CD}
 	EndGlobalSection
 EndGlobal
