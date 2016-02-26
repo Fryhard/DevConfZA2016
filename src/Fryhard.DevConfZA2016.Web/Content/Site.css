@@ -8,8 +8,8 @@ body {
     background-color: #181826;
     border-top: solid 10px #000;
     color: #333;
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    /*font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;*/
     margin: 0;
     padding: 0;
 }
@@ -58,7 +58,7 @@ mark {
     visibility: hidden;
 }
 
-h1, h2, h3,
+/*h1, h2, h3,
 h4, h5, h6 {
     color: #000;
     margin-bottom: 0;
@@ -88,11 +88,12 @@ h5, h6 {
     h5 a:link, h5 a:visited, h5 a:active {
         padding: 0;
         text-decoration: none;
-    }
+    }*/
 
 .smile{
      width:20%; 
-     float:left
+     float:left;
+     cursor: pointer;
 }
 
 .smileparent{
@@ -111,8 +112,34 @@ h5, h6 {
         height:400px;
         background-size:cover;
         background-position: center center;
-    }
+}
 
+.VoteAgain{
+    width:175px; 
+    margin:0 auto;
+    align-content:center;
+    display:none;
+}
+
+.BannerTitle{
+    height:110px;
+    margin-top:-65px;
+    margin-left: 160px;
+}
+
+.BannerImage{
+        position:absolute;
+        height:100px;
+        margin-left:-100px;
+        margin-top:-30px;
+}
+
+.results {
+    display:none;
+    width:60%; 
+    margin:0 auto;
+    text-align:center;
+}
 
 /* main layout
 ----------------------------------------------------------*/
@@ -796,7 +823,26 @@ tr.pager td {
         text-align:center;
     }
 
+    .BannerTitle{
+        height:110px;
+        margin-top:-82px;
+        margin-left: 160px;
+        width: 280px;
+    }
 
+    .BannerImage{
+        position:absolute;
+        height:100px;
+        margin-left:-100px;
+        margin-top:-10px;
+    }
+
+    .VoteAgain{
+        width:155px; 
+        margin:0 auto;
+        align-content:center;
+        display:none;
+    }
 
 }
 
@@ -821,12 +867,10 @@ tr.pager td {
         margin:0 auto;
         text-align:center;
     }
-}
 
-
-/********************
-*   Header max size*
-********************/
-@media only screen and (max-width: 1181px) {
- 
+    .BannerTitle{
+        height:110px;
+        margin-top:-120px;
+        margin-left: 160px;
+    }
 }

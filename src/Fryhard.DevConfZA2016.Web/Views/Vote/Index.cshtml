@@ -1,15 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cast your Vote";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div id="body">
-    <section class="featured">
+    @*<section class="featured">
 
         <div class="headerimage">
         </div>
-    </section>
+    </section>*@
     <section class="content-wrapper main-content clear-fix">
+        <br/>
         <div class="smileheader">
             <h1>Tell me how I am doing.</h1>
             <h3>Click on the below indicator of how you think this talk is going.</h3>
@@ -17,21 +18,109 @@
         </div>
 
         <div class="smileparent">
-            <div class="smile">
-                <img src="~/Content/Images/smile/0.png" />
+            <div class="smile" id="smile0">
+                <img src="~/Content/Images/smile/0.png" onmouseover="this.src = '/Content/Images/smile/0_hover.png'" onmouseout="    this.src = '/Content/Images/smile/0.png'" />
             </div>
-            <div class="smile">
-                <img src="~/Content/Images/smile/1.png" />
+            <div class="smile" id="smile1">
+                <img src="~/Content/Images/smile/1.png" onmouseover="this.src = '/Content/Images/smile/1_hover.png'" onmouseout="    this.src = '/Content/Images/smile/1.png'" />
             </div>
-            <div class="smile">
-                <img src="~/Content/Images/smile/2.png" />
+            <div class="smile" id="smile2">
+                <img src="~/Content/Images/smile/2.png" onmouseover="this.src = '/Content/Images/smile/2_hover.png'" onmouseout="    this.src = '/Content/Images/smile/2.png'" />
             </div>
-            <div class="smile">
-                <img src="~/Content/Images/smile/3.png" />
+            <div class="smile" id="smile3">
+                <img src="~/Content/Images/smile/3.png" onmouseover="this.src = '/Content/Images/smile/3_hover.png'" onmouseout="    this.src = '/Content/Images/smile/3.png'" />
             </div>
-            <div class="smile">
-                <img src="~/Content/Images/smile/4.png" />
+            <div class="smile" id="smile4">
+                <img src="~/Content/Images/smile/4.png" onmouseover="this.src = '/Content/Images/smile/4_hover.png'" onmouseout="    this.src = '/Content/Images/smile/4.png'" />
             </div>
+        </div>
+
+        <div class="clear-fix">
+        </div>
+
+        <div class="results">
+            <h4>Your vote has been submitted, please wait while we process the votes...</h4>
+            <h2>Current result:</h2>
+            <div style="width:159px; margin:0 auto;">
+                <img id="resultImage" src="~/Content/Images/smile/UnknownResult.png" />
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="VoteAgain">
+            <button type="button" class="btn btn-success btn-lg" onclick="showVote();">
+                <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Vote Again
+            </button>
         </div>
 </section>
 </div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+        $(function () {
+            // Reference the auto-generated proxy for the hub.  
+            var voteHub = $.connection.voteHub;
+
+            // Create a function that the hub can call back to display messages.
+            voteHub.client.displayResult = function (previousVote, isSuccess, avgAnswer) {
+                // Add the message to the page. 
+                
+                //alert("success, " + isSuccess + " - " + avgAnswer);
+
+                $('.smileparent').fadeOut();
+
+                if (isSuccess)
+                {
+                    var imageNum = avgAnswer + 2;
+                    $('#resultImage').attr("src", "/Content/Images/smile/" + imageNum + "_Result.png");
+                }
+                else
+                {
+
+                }
+
+                $('.results').fadeIn();
+                $('.VoteAgain').fadeIn();
+                $('.smileheader').fadeOut();
+
+            };
+            
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                $('#smile0').click(function () {
+                    voteHub.server.castVote(-2);
+                });
+
+                $('#smile1').click(function () {
+                    voteHub.server.castVote(-1);
+                });
+
+                $('#smile2').click(function () {
+                    voteHub.server.castVote(0);
+                });
+
+                $('#smile3').click(function () {
+                    voteHub.server.castVote(1);
+                });
+
+                $('#smile4').click(function () {
+                    voteHub.server.castVote(2);
+                });
+            });
+        });
+
+        function showVote()
+        {
+            $('.results').fadeOut();
+            $('.VoteAgain').fadeOut();
+
+            $('.smileheader').fadeIn();
+            $('.smileparent').fadeIn();
+            
+        }
+    </script>
+}
