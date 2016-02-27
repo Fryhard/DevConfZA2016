@@ -121,6 +121,11 @@ h5, h6 {
     display:none;
 }
 
+.BannerMain{
+    margin:auto; 
+    width:800px;
+}
+
 .BannerTitle{
     height:110px;
     margin-top:-65px;
@@ -823,18 +828,23 @@ tr.pager td {
         text-align:center;
     }
 
+    .BannerMain{
+        margin:auto; 
+        width:500px;
+    }
+
     .BannerTitle{
         height:110px;
-        margin-top:-82px;
+        margin-top:-85px;
         margin-left: 160px;
-        width: 280px;
+        text-align: center;
     }
 
     .BannerImage{
         position:absolute;
         height:100px;
-        margin-left:-100px;
-        margin-top:-10px;
+        margin-left:-60px;
+        margin-top:-20px;
     }
 
     .VoteAgain{
@@ -848,9 +858,9 @@ tr.pager td {
 
 
 /********************
-*   500px Mobile Styles   *
+*   500px Styles   *
 ********************/
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
 
     .smile{
         float:none;
@@ -868,9 +878,46 @@ tr.pager td {
         text-align:center;
     }
 
+    .BannerMain{
+        margin:auto; 
+        width:400px;
+    }
+
+    .BannerTitle{
+        height:110px;
+        margin-top:-100px;
+        margin-left: 100px;
+    }
+
+    .BannerImage{
+        position:absolute;
+        height:100px;
+        margin-left:-95px;
+        margin-top:-10px;
+    }
+}
+
+/********************
+*   400px Styles   *
+********************/
+@media only screen and (max-width: 400px) {
+
+    .BannerMain{
+        margin:auto; 
+        width:300px;
+    }
+
     .BannerTitle{
         height:110px;
         margin-top:-120px;
-        margin-left: 160px;
+        margin-left: 50px;
+        width: 256px;
+    }
+
+    .BannerImage{
+        position:absolute;
+        height:100px;
+        margin-left:-56px;
+        margin-top:16px;
     }
 }
