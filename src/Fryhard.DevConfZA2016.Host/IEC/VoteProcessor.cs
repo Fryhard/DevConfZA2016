@@ -13,8 +13,9 @@ namespace Fryhard.DevConfZA2016.Host.IEC
     public class VoteProcessor
     {
         private static readonly ILog _Log = LogManager.GetLogger(typeof(Host));
-
+         
         private List<Vote> _Votes { get; set; }
+        private int _VoteNumber;
 
         public VoteProcessor ()
         {
@@ -23,10 +24,17 @@ namespace Fryhard.DevConfZA2016.Host.IEC
 
         public AverageResult GetAverageResult ()
         {
-            double avgD = _Votes.Count == 0? 0 : _Votes.Average(v => v.VoteValue);
-            _Log.Debug("Avg = " + avgD);
+            int avg = 0;
+            if (_Votes.Count != 0)
+            {
+                int total = _Votes.Sum(v => v.VoteValue);
 
-            int avg = (int) Math.Round(avgD);
+                decimal avgDec = (decimal)total / (decimal)_Votes.Count;
+
+                _Log.Debug("Total = " + total + ". Votes = " + _Votes.Count + ". Avg = " + avgDec);
+
+                avg = (int) Math.Round(avgDec);
+            }
             return new AverageResult ()
             {
                 Average = avg,
@@ -43,6 +51,7 @@ namespace Fryhard.DevConfZA2016.Host.IEC
                 {
                     //Add the vote to the local store of all votes
                     _Votes.Add(vote);
+                    _VoteNumber++;
 
                     var avg = GetAverageResult();
 
@@ -75,11 +84,12 @@ namespace Fryhard.DevConfZA2016.Host.IEC
                     Thread.Sleep(2000);
 
                     //Ever 4th bad vote gets "lost"
-                    if (!(_Votes.Count % 4 == 0))
+                    if (!(_VoteNumber % 4 == 0))
                     {
                         //Add the vote to the local store of all votes
                         _Votes.Add(vote);
                     }
+                    _VoteNumber++;
 
                     var avg = GetAverageResult();
 

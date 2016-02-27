@@ -12,7 +12,7 @@ namespace Fryhard.DevConfZA2016.Host.IEC
     public static class VoteSaver
     {
         private static readonly ILog _Log = LogManager.GetLogger(typeof(Host));
-
+         
         public static Task ProcessVote(Vote vote)
         {
             return Task.Factory.StartNew(() =>
