@@ -362,6 +362,10 @@
       <Project>{78e7efaa-de5a-4304-a0c9-790fa052961c}</Project>
       <Name>Fryhard.DevConfZA2016.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fryhard.DevConfZA2016.Model\Fryhard.DevConfZA2016.Model.csproj">
+      <Project>{a5ce7eb1-26db-43ea-8b80-b9f2b6829389}</Project>
+      <Name>Fryhard.DevConfZA2016.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
