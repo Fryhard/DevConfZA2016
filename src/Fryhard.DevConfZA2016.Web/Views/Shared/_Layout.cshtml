@@ -14,7 +14,10 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">
-                    <a href="~/">DevConf Z.A. 2016 - Brendan Fry</a></p>
+
+                    <a href="~/">DevConf Z.A. 2016 - Brendan Fry</a>
+                    <img id="globalresults" src="~/Content/Images/smile/UnknownResult.png" width="50px" />
+                </p>
             </div>
             <div class="float-right">
                 <nav>
@@ -29,6 +32,24 @@
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(function () {
+                // Reference the auto-generated proxy for the hub.
+                var voteHub = $.connection.voteHub;
+
+                // Create a function that the hub can call back to display messages.
+                voteHub.client.updateAverage = function (avgAnswer) {
+                    var imageNum = avgAnswer + 2;
+                    $('#globalresults').attr("src", "/Content/Images/smile/" + imageNum + "_Result.png");
+                };
+            
+                // Start the connection.
+                $.connection.hub.start().done();
+        });
+    </script>
 </body>
 </html>

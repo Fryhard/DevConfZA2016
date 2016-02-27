@@ -1,7 +1,7 @@
 ﻿using Fryhard.DevConfZA2016.Common;
 using Fryhard.DevConfZA2016.Host.IEC;
-using Fryhard.DevConfZA2016.Model;
 using log4net;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +28,14 @@ namespace Fryhard.DevConfZA2016.Host
                 BusHost.Register();
                 _Log.Debug("Bus registered");
 
-                IDisposable voteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.NewVote, BusTopic.NewVote, msg => _VoteProcessor.ProcessVote(msg));
-                _Log.Debug("External processing service subscribed to new leads");
+                IDisposable goodVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.GoodVote, BusTopic.NewVote, msg => _VoteProcessor.ProcessGoodVote(msg));
+                SubscriptionHandler.Instance.AddSubscription("GoodVote", goodVoteSubscription);
 
-                SubscriptionHandler.Instance.AddSubscription("vote", voteSubscription);
+                IDisposable badVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.BadVote, BusTopic.NewVote, msg => _VoteProcessor.ProcessBadVote(msg));
+                SubscriptionHandler.Instance.AddSubscription("BadVote", badVoteSubscription);
+
+                IDisposable saveVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.SaveVote, BusTopic.NewVote, msg => VoteSaver.ProcessVote(msg));
+                SubscriptionHandler.Instance.AddSubscription("saveVote", saveVoteSubscription);
             }
             catch (Exception ex)
             {

@@ -207,6 +207,7 @@
     <Content Include="Content\Images\jagmethod-logo.png" />
     <Content Include="Content\Images\joburg-my-city_final4.gif" />
     <Content Include="Content\Images\DevConf-logo.png" />
+    <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\rabbitmq-icon.png" />
     <Content Include="Content\Images\smile\0.png" />
     <Content Include="Content\Images\smile\0_Hover.png" />

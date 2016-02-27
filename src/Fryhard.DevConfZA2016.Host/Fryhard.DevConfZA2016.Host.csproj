@@ -35,6 +35,12 @@
     <Reference Include="EasyNetQ">
       <HintPath>..\..\packages\EasyNetQ.0.54.3.424\lib\net45\EasyNetQ.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -42,6 +48,7 @@
       <HintPath>..\..\packages\RabbitMQ.Client.3.6.0\lib\net45\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,8 +60,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DevConfVoteContext.cs" />
     <Compile Include="Host.cs" />
+    <Compile Include="IEC\VoteSaver.cs" />
     <Compile Include="IEC\VoteProcessor.cs" />
+    <Compile Include="Migrations\201602271222577_Initial.cs" />
+    <Compile Include="Migrations\201602271222577_Initial.Designer.cs">
+      <DependentUpon>201602271222577_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602271231353_AddVisitorId.cs" />
+    <Compile Include="Migrations\201602271231353_AddVisitorId.Designer.cs">
+      <DependentUpon>201602271231353_AddVisitorId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +89,14 @@
       <Project>{a5ce7eb1-26db-43ea-8b80-b9f2b6829389}</Project>
       <Name>Fryhard.DevConfZA2016.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602271222577_Initial.resx">
+      <DependentUpon>201602271222577_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602271231353_AddVisitorId.resx">
+      <DependentUpon>201602271231353_AddVisitorId.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

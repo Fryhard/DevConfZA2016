@@ -69,32 +69,32 @@ namespace Fryhard.DevConfZA2016.Common
 
         public static void Publish<T>(T message, BusTopic topic) where T : class
         {
-            Bus.Publish(message, topic.ToString());
+            Bus.Publish(message, topic.ToString("G"));
         }
 
         public static void PublishAsync<T>(T message, BusTopic topic) where T : class
         {
-            Bus.PublishAsync(message, topic.ToString());
+            Bus.PublishAsync(message, topic.ToString("G"));
         }
 
         public static IDisposable Subscribe<T>(BusSubscription subscription, BusTopic topic, Action<T> onMessage) where T : class
         {
-            return Bus.Subscribe(subscription.ToString(), onMessage, x => x.WithTopic(topic.ToString()));
+            return Bus.Subscribe(subscription.ToString("G"), onMessage, x => x.WithTopic(topic.ToString("G")));
         }
 
         public static IDisposable SubscribeAsync<T>(BusSubscription subscription, BusTopic topic, Func<T, Task> onMessage) where T : class
         {
-            return Bus.SubscribeAsync(subscription.ToString(), onMessage, x => x.WithTopic(topic.ToString()));
+            return Bus.SubscribeAsync(subscription.ToString("G"), onMessage, x => x.WithTopic(topic.ToString("G")));
         }
 
         public static IDisposable SubscribeAsync<T>(BusSubscription subscription, BusTopic topic, Func<T, Task<T>> onMessage) where T : class
         {
-            return Bus.SubscribeAsync(subscription.ToString(), onMessage, x => x.WithTopic(topic.ToString()));
+            return Bus.SubscribeAsync(subscription.ToString("G"), onMessage, x => x.WithTopic(topic.ToString("G")));
         }
 
         public static IDisposable SubscribeAsync<T>(BusSubscription subscription, Func<T, Task<T>> onMessage) where T : class
         {
-            return Bus.SubscribeAsync(subscription.ToString(), onMessage);
+            return Bus.SubscribeAsync(subscription.ToString("G"), onMessage);
         }
 
         public static void Register(string connectionString = null)

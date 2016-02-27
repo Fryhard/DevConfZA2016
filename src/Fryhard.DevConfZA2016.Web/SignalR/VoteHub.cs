@@ -6,7 +6,7 @@ using Microsoft.AspNet.SignalR;
 using Fryhard.DevConfZA2016.Common;
 using log4net;
 using Fryhard.DevConfZA2016.Web.State;
-using Fryhard.DevConfZA2016.Model;
+using Model;
 
 namespace Fryhard.DevConfZA2016.Web.SignalR
 {
@@ -18,11 +18,13 @@ namespace Fryhard.DevConfZA2016.Web.SignalR
         {
             string connectionId = Context.ConnectionId;
 
-            bool success = true;
             try
             {
                 string userAgent = Context.Headers["User-Agent"];
                 string ip = Context.Request.GetRemoteIpAddress();
+
+                //Read the value from the cookie that we paced when the visitor joined us
+                string voterId = Context.RequestCookies["Voter"].Value;
 
                 Vote vote = new Vote()
                 {
@@ -30,6 +32,7 @@ namespace Fryhard.DevConfZA2016.Web.SignalR
                     IpAddress = ip,
                     UserAgent = userAgent,
                     VoteDateTime = DateTime.Now,
+                    VoterId = voterId,
                     VoteValue = number
                 };
 
@@ -38,12 +41,8 @@ namespace Fryhard.DevConfZA2016.Web.SignalR
             }
             catch (Exception ex)
             {
-                success = false;
                 _Log.Error("Failed to make vote " + number + " for connection " + connectionId + ". " + ex.Message, ex);
             }
-
-            //Return a response to the client
-            Clients.Client(connectionId).DisplayVoteResult(number, success, VotingState.CurrentAverage);
         }
     }
 }

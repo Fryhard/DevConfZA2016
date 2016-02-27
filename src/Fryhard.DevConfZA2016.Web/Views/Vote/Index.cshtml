@@ -38,8 +38,16 @@
         <div class="clear-fix">
         </div>
 
+        <div class="loading">
+            <h4>Your vote has been submitted, please wait while it is tallied...</h4>
+            <h2>Current result:</h2>
+            <div class="loadingImg">
+                <img src="~/Content/Images/loading.gif" />
+            </div>
+        </div>
+        
         <div class="results">
-            <h4>Your vote has been submitted...</h4>
+            <h4>Your vote has been counted!</h4>
             <h2>Current result:</h2>
             <div style="width:159px; margin:0 auto;">
                 <img id="resultImage" src="~/Content/Images/smile/UnknownResult.png" onclick="showVote();"/>
@@ -58,65 +66,71 @@
 
 @section Scripts
 {
-    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="~/signalr/hubs"></script>
     <script type="text/javascript">
         $(function () {
-            // Reference the auto-generated proxy for the hub.  
-            var voteHub = $.connection.voteHub;
+                // Reference the auto-generated proxy for the hub.  
+                var voteHub = $.connection.voteHub;
 
-            // Create a function that the hub can call back to display messages.
-            voteHub.client.displayVoteResult = function (previousVote, isSuccess, avgAnswer) {
-                // Add the message to the page. 
-                
-                //alert("success, " + isSuccess + " - " + avgAnswer);
+                // Create a function that the hub can call back to display messages.
+                voteHub.client.displayVoteResult = function (previousVote, isSuccess, avgAnswer) {
 
-                $('.smileparent').fadeOut();
+                    $('.loading').hide();
 
-                if (isSuccess)
-                {
                     var imageNum = avgAnswer + 2;
                     $('#resultImage').attr("src", "/Content/Images/smile/" + imageNum + "_Result.png");
-                }
-                else
-                {
 
-                }
-
-                $('.results').fadeIn();
-                $('.VoteAgain').fadeIn();
-                $('.smileheader').fadeOut();
-
-            };
+                    $('.results').fadeIn();
+                    $('.VoteAgain').fadeIn();
+                };
             
             // Start the connection.
             $.connection.hub.start().done(function () {
                 $('#smile0').click(function () {
                     voteHub.server.castVote(-2);
+
+                    $('.smileparent').hide();
+                    $('.smileheader').hide();
+                    $('.loading').fadeIn();
                 });
 
                 $('#smile1').click(function () {
                     voteHub.server.castVote(-1);
+
+                    $('.smileparent').hide();
+                    $('.smileheader').hide();
+                    $('.loading').fadeIn();
                 });
 
                 $('#smile2').click(function () {
                     voteHub.server.castVote(0);
+
+                    $('.smileparent').hide();
+                    $('.smileheader').hide();
+                    $('.loading').fadeIn();
                 });
 
                 $('#smile3').click(function () {
                     voteHub.server.castVote(1);
+
+                    $('.smileparent').hide();
+                    $('.smileheader').hide();
+                    $('.loading').fadeIn();
                 });
 
                 $('#smile4').click(function () {
                     voteHub.server.castVote(2);
+
+                    $('.smileparent').hide();
+                    $('.smileheader').hide();
+                    $('.loading').fadeIn();
                 });
             });
         });
 
         function showVote()
         {
-            $('.results').fadeOut();
-            $('.VoteAgain').fadeOut();
+            $('.results').hide();
+            $('.VoteAgain').hide();
 
             $('.smileheader').fadeIn();
             $('.smileparent').fadeIn();

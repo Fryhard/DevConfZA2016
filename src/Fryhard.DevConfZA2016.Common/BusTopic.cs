@@ -10,6 +10,7 @@ namespace Fryhard.DevConfZA2016.Common
     public enum BusTopic
     {
         NewVote = 0,
+        VoteProcessed = 1,
         NewAverageResult = 10,
     }
 }
