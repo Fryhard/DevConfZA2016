@@ -5,12 +5,20 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5E3A6BA9-72D2-4EC1-B9EC-15A6751F9754}"
 	ProjectSection(SolutionItems) = preProject
+		src\Fryhard.DevConfZA2016.Web\RabbitMQ\BusSubscription.cs = src\Fryhard.DevConfZA2016.Web\RabbitMQ\BusSubscription.cs
+		src\Fryhard.DevConfZA2016.Web\RabbitMQ\BusTopic.cs = src\Fryhard.DevConfZA2016.Web\RabbitMQ\BusTopic.cs
 		docs\DevConf_BrendanFry_AYearOfRabbitMQ.pptx = docs\DevConf_BrendanFry_AYearOfRabbitMQ.pptx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B28B51C3-481B-4C41-8D84-4459653A70CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fryhard.DevConfZA2016.Web", "src\Fryhard.DevConfZA2016.Web\Fryhard.DevConfZA2016.Web.csproj", "{8CE98CD4-365B-4437-B494-C4F9F6C561E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fryhard.DevConfZA2016.Common", "src\Fryhard.DevConfZA2016.Common\Fryhard.DevConfZA2016.Common.csproj", "{78E7EFAA-DE5A-4304-A0C9-790FA052961C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fryhard.DevConfZA2016.Host", "src\Fryhard.DevConfZA2016.Host\Fryhard.DevConfZA2016.Host.csproj", "{7D5DDB25-7BD1-4301-B1DE-1C63EDC9C4E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fryhard.DevConfZA2016.Model", "src\Fryhard.DevConfZA2016.Model\Fryhard.DevConfZA2016.Model.csproj", "{A5CE7EB1-26DB-43EA-8B80-B9F2B6829389}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,11 +30,26 @@ Global
 		{8CE98CD4-365B-4437-B494-C4F9F6C561E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CE98CD4-365B-4437-B494-C4F9F6C561E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CE98CD4-365B-4437-B494-C4F9F6C561E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78E7EFAA-DE5A-4304-A0C9-790FA052961C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78E7EFAA-DE5A-4304-A0C9-790FA052961C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78E7EFAA-DE5A-4304-A0C9-790FA052961C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78E7EFAA-DE5A-4304-A0C9-790FA052961C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D5DDB25-7BD1-4301-B1DE-1C63EDC9C4E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D5DDB25-7BD1-4301-B1DE-1C63EDC9C4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D5DDB25-7BD1-4301-B1DE-1C63EDC9C4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D5DDB25-7BD1-4301-B1DE-1C63EDC9C4E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5CE7EB1-26DB-43EA-8B80-B9F2B6829389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CE7EB1-26DB-43EA-8B80-B9F2B6829389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CE7EB1-26DB-43EA-8B80-B9F2B6829389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CE7EB1-26DB-43EA-8B80-B9F2B6829389}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8CE98CD4-365B-4437-B494-C4F9F6C561E5} = {B28B51C3-481B-4C41-8D84-4459653A70CD}
+		{78E7EFAA-DE5A-4304-A0C9-790FA052961C} = {B28B51C3-481B-4C41-8D84-4459653A70CD}
+		{7D5DDB25-7BD1-4301-B1DE-1C63EDC9C4E4} = {B28B51C3-481B-4C41-8D84-4459653A70CD}
+		{A5CE7EB1-26DB-43EA-8B80-B9F2B6829389} = {B28B51C3-481B-4C41-8D84-4459653A70CD}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/packages
+/src/Fryhard.DevConfZA2016.Model/bin
+/src/Fryhard.DevConfZA2016.Model/obj
+/src/Fryhard.DevConfZA2016.Common/bin
+/src/Fryhard.DevConfZA2016.Common/obj
+/src/Fryhard.DevConfZA2016.Host/bin
+/src/Fryhard.DevConfZA2016.Host/obj
+/src/Fryhard.DevConfZA2016.Web/bin
+/src/Fryhard.DevConfZA2016.Web/obj
+*.user
+*.suo

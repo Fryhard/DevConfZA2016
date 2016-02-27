@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Fryhard.DevConfZA2016.Common;
+using Fryhard.DevConfZA2016.Web.App_Start;
+using Fryhard.DevConfZA2016.Web.State;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,6 +25,15 @@ namespace Fryhard.DevConfZA2016.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            RabbitStartup.Subscribe();
+            VotingState.Init();
+        }
+
+        protected void Application_End()
+        {
+            BusHost.Dispose();
+            RabbitStartup.Dispose();
         }
     }
 }

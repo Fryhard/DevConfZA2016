@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Fryhard.DevConfZA2016.Web.Models
+namespace Fryhard.DevConfZA2016.Model
 {
     public class Vote
     {

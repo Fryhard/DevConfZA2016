@@ -39,7 +39,7 @@
         </div>
 
         <div class="results">
-            <h4>Your vote has been submitted, please wait while we process the votes...</h4>
+            <h4>Your vote has been submitted...</h4>
             <h2>Current result:</h2>
             <div style="width:159px; margin:0 auto;">
                 <img id="resultImage" src="~/Content/Images/smile/UnknownResult.png" />
@@ -66,7 +66,7 @@
             var voteHub = $.connection.voteHub;
 
             // Create a function that the hub can call back to display messages.
-            voteHub.client.displayResult = function (previousVote, isSuccess, avgAnswer) {
+            voteHub.client.displayVoteResult = function (previousVote, isSuccess, avgAnswer) {
                 // Add the message to the page. 
                 
                 //alert("success, " + isSuccess + " - " + avgAnswer);
