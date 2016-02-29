@@ -13,3 +13,4 @@
 /src/Fryhard.DevConfZA2016.Web/obj
 *.user
 *.suo
+/deploy
