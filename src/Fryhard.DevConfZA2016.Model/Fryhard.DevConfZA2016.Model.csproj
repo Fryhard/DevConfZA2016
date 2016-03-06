@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control.cs" />
     <Compile Include="VoteProcessed.cs" />
     <Compile Include="AverageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

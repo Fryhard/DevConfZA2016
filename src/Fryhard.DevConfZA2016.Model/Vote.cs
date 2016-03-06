@@ -24,5 +24,8 @@ namespace Model
         public int VoteValue { get; set; }
 
         public DateTime VoteDateTime { get; set; }
+
+        [NotMapped]
+        public bool VoteLost { get; set; }
     }
 }

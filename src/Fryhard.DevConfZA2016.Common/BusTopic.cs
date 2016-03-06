@@ -11,6 +11,7 @@ namespace Fryhard.DevConfZA2016.Common
     {
         NewVote = 0,
         VoteProcessed = 1,
-        NewAverageResult = 10,
+        NewAverageResult = 3,
+        Control = 10,
     }
 }

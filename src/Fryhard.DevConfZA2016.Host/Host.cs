@@ -28,14 +28,10 @@ namespace Fryhard.DevConfZA2016.Host
                 BusHost.Register();
                 _Log.Debug("Bus registered");
 
-                IDisposable goodVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.GoodVote, BusTopic.NewVote, msg => _VoteProcessor.ProcessGoodVote(msg));
-                SubscriptionHandler.Instance.AddSubscription("GoodVote", goodVoteSubscription);
+                Subscribe();
 
-                IDisposable badVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.BadVote, BusTopic.NewVote, msg => _VoteProcessor.ProcessBadVote(msg));
-                SubscriptionHandler.Instance.AddSubscription("BadVote", badVoteSubscription);
-
-                IDisposable saveVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.SaveVote, BusTopic.NewVote, msg => VoteSaver.ProcessVote(msg));
-                SubscriptionHandler.Instance.AddSubscription("saveVote", saveVoteSubscription);
+                IDisposable controlSubscription = BusHost.SubscribeAsync<Control>(BusSubscription.Control, BusTopic.Control, msg => ProcessControl(msg));
+                SubscriptionHandler.Instance.AddSubscription("Control", controlSubscription);
             }
             catch (Exception ex)
             {
@@ -43,6 +39,40 @@ namespace Fryhard.DevConfZA2016.Host
             }
         }
 
+        public void Subscribe ()
+        {
+            IDisposable goodVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.GoodVote, BusTopic.NewVote, msg => _VoteProcessor.ProcessGoodVote(msg));
+            SubscriptionHandler.Instance.AddSubscription("GoodVote", goodVoteSubscription);
+
+            IDisposable badVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.BadVote, BusTopic.NewVote, msg => _VoteProcessor.ProcessBadVote(msg));
+            SubscriptionHandler.Instance.AddSubscription("BadVote", badVoteSubscription);
+
+            IDisposable saveVoteSubscription = BusHost.SubscribeAsync<Vote>(BusSubscription.SaveVote, BusTopic.NewVote, msg => VoteSaver.ProcessVote(msg));
+            SubscriptionHandler.Instance.AddSubscription("SaveVote", saveVoteSubscription);
+        }
+
+        public Task ProcessControl (Control control)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                if (control.Stop)
+                {
+                    SubscriptionHandler.Instance.Unsubscribe("GoodVote");
+                    SubscriptionHandler.Instance.Unsubscribe("BadVote");
+                    SubscriptionHandler.Instance.Unsubscribe("SaveVote");
+                }
+                    
+                if (control.Start)
+                {
+                    Subscribe();
+                }
+
+                if (control.Reset && _VoteProcessor != null)
+                {
+                    _VoteProcessor.Reset();
+                }
+            });
+        }
 
         public virtual void Stop()
         {

@@ -16,7 +16,9 @@
                 <p class="site-title">
 
                     <a href="~/">DevConf Z.A. 2016 - Brendan Fry</a>
-                    <img id="globalresults" src="~/Content/Images/smile/UnknownResult.png" width="50px" />
+                    <a href="~/Vote">
+                        <img id="globalresults" src="~/Content/Images/smile/UnknownResult.png" width="50px" />
+                    </a>
                 </p>
             </div>
             <div class="float-right">
@@ -24,6 +26,7 @@
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                         <li>@Html.ActionLink("Vote", "Index", "Vote", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Results", "Index", "Results", new { area = "" }, null)</li>
                     </ul>
                 </nav>
             </div>
@@ -42,8 +45,8 @@
                 var voteHub = $.connection.voteHub;
 
                 // Create a function that the hub can call back to display messages.
-                voteHub.client.updateAverage = function (avgAnswer) {
-                    var imageNum = avgAnswer + 2;
+                voteHub.client.updateLastVote = function (lastVote) {
+                    var imageNum = lastVote + 2;
                     $('#globalresults').attr("src", "/Content/Images/smile/" + imageNum + "_Result.png");
                 };
             

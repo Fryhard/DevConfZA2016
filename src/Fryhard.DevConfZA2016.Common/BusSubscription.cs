@@ -13,5 +13,7 @@ namespace Fryhard.DevConfZA2016.Common
         VoteProcessed = 2,
         SaveVote = 3,
         NewAverageResult = 4,
+        Control = 10,
+
     }
 }

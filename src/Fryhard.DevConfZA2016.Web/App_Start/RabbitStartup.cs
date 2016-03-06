@@ -38,7 +38,7 @@ namespace Fryhard.DevConfZA2016.Web.App_Start
                 var context = GlobalHost.ConnectionManager.GetHubContext<VoteHub>();
 
                 //Update the client of their vote
-                context.Clients.All.UpdateAverage(a.Average);
+                context.Clients.All.UpdateAverage(a);
             });
         }
 
@@ -51,6 +51,10 @@ namespace Fryhard.DevConfZA2016.Web.App_Start
 
                 //Update the client of their vote
                 context.Clients.Client(v.ConnectionId).DisplayVoteResult(v.OriginalVoteValue, true, v.CurrentAverage);
+
+                //Update all clients on the latest vote
+                context.Clients.All.UpdateLastVote(v.OriginalVoteValue);
+                
             });
         }
 
