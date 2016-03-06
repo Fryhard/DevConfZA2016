@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="body">
+    <br />
+    <br />
+    <section class="content-wrapper main-content clear-fix">
+        <div class="smileparent">
+            <div class="smileheader">
+                <h1>Results</h1>
+            </div>
+            <hr/>
+
+            <table>
+                <tr>
+                    <td style="width:200px; text-align:center">
+                        &nbsp;
+                    </td>
+                    <td style="width:200px; text-align:center">
+                        <img src="~/Content/Images/smile/0.png" width="100px" />
+                    </td>
+                    <td style="width:200px; text-align:center">
+                        <img src="~/Content/Images/smile/1.png" width="100px" />
+                    </td>
+                    <td style="width:200px; text-align:center">
+                        <img src="~/Content/Images/smile/2.png" width="100px" />
+                    </td>
+                    <td style="width:200px; text-align:center">
+                        <img src="~/Content/Images/smile/3.png" width="100px" />
+                    </td>
+                    <td style="width:200px; text-align:center">
+                        <img src="~/Content/Images/smile/4.png" width="100px" />
+                    </td>
+                    <td style="width:200px; text-align:center">
+                        <img id="imgAvg" src="~/Content/Images/smile/UnknownResult.png" width="100px" />
+                    </td>
+                </tr>
+                <tr style="font-size:30px; text-align:center">
+                    <td style="font-size:30px; text-align:left">Votes</td>
+                    <td id="CountBigSmile">0</td>
+                    <td id="CountSmallSmile">0</td>
+                    <td id="CountNoSmile">0</td>
+                    <td id="CountSmallFrown">0</td>
+                    <td id="CountBigFrown">0</td>
+                    <td id="Total" style="font-style:italic">0</td>
+                </tr>
+                <tr style="font-size:30px; text-align:center">
+                    <td style="font-size:30px; text-align:left">"Lost"</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td id="LostNoSmile">0</td>
+                    <td id="LostSmallFrown">0</td>
+                    <td id="LostBigFrown">0</td>
+                    <td id="TotalLost" style="font-style:italic">0</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+</div>
+
+<script type="text/javascript">
+        $(function () {
+            // Reference the auto-generated proxy for the hub.
+            var voteHub = $.connection.voteHub;
+
+            // Create a function that the hub can call back to display messages.
+            voteHub.client.updateAverage = function (avg) {
+                var imageNum = avg.Average + 2;
+                $('#imgAvg').attr("src", "/Content/Images/smile/" + imageNum + "_Result.png");
+
+                $('#CountBigSmile').html(avg.CountBigSmile);
+                $('#CountSmallSmile').html(avg.CountSmallSmile);
+                $('#CountNoSmile').html(avg.CountNoSmile);
+                $('#CountSmallFrown').html(avg.CountSmallFrown);
+                $('#CountBigFrown').html(avg.CountBigFrown);
+                $('#Total').html(avg.TotalCount);
+                $('#LostNoSmile').html(avg.LostNoSmile);
+                $('#LostSmallFrown').html(avg.LostSmallFrown);
+                $('#LostBigFrown').html(avg.LostBigFrown);
+                $('#TotalLost').html(avg.CountLost);
+
+            };
+
+            // Start the connection.
+            $.connection.hub.start().done();
+        });
+</script>
