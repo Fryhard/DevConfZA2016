@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5E3A6BA9-72D2-4EC1-B9EC-15A6751F9754}"
 	ProjectSection(SolutionItems) = preProject
 		docs\DevConf_BrendanFry_AYearOfRabbitMQ.pptx = docs\DevConf_BrendanFry_AYearOfRabbitMQ.pptx
+		docs\DevConf_BrendanFry_AYearOfRabbitMQ_Final.pptx = docs\DevConf_BrendanFry_AYearOfRabbitMQ_Final.pptx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B28B51C3-481B-4C41-8D84-4459653A70CD}"
